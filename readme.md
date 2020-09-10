@@ -5,8 +5,10 @@ Users can run this as background service while playing Starbound (Sexbound). It 
 * Install NPM
 
 ## Quick Start
-
 * Clone this repo.
 * Adjust 'config.json' with your own settings.
 * Run ```npm install``` and ```npm start```within the cloned directory in terminal.
 * Leave the process running in the terminal and while playing Starbound.
+
+## How it works
+SXB_EVENT events are forwarded to an API endpoint that you specify. They are sent via a POST request to <API_URL>/record
