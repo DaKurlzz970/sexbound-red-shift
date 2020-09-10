@@ -10,6 +10,8 @@ ConfigValidatorFactory.make().validate().then(() => {
     if (metadata == null) return
     metadata = metadata[1].split(':')
   
+    console.log("EVENT : " + metadata[1] + " => " + metadata[2])
+
     let eventHandler = EventHandlerFactory.make()
     eventHandler.handleEvent(metadata[1], metadata[2])
       .catch(reason => { console.error(reason) })
