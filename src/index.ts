@@ -14,6 +14,6 @@ ConfigValidatorFactory.make().validate().then(() => {
     eventHandler.handleEvent(metadata[1], metadata[2])
       .catch(reason => { console.error(reason) })
   })
-}).catch((reason: Error) => { 
+}).catch((reason: Error) => {
   console.error(reason.message)
 })

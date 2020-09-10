@@ -4,7 +4,7 @@ const ConfigValidator_factory_1 = require("./config-validator/ConfigValidator.fa
 const Watcher_factory_1 = require("./watcher/Watcher.factory");
 const EventHandler_factory_1 = require("./event-handler/EventHandler.factory");
 ConfigValidator_factory_1.ConfigValidatorFactory.make().validate().then(() => {
-    console.log("Watching Starbound Log..");
+    console.log("watching..");
     Watcher_factory_1.WatcherFactory.make().on("line", function (data) {
         let metadata = data.match(/\[.*]\s(SXB_EVENT.*)/);
         if (metadata == null)
