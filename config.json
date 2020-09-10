@@ -1,5 +1,3 @@
 {
-  "api_url" : "localhost:8080",
-  "api_key" : "XXXX",
   "starbound_log_file_path" : "/Users/loc/Library/Application Support/Steam/steamapps/common/Starbound/storage/starbound.log" 
 }
