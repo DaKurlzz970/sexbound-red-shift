@@ -1,15 +1,20 @@
-import { Tail } from "tail"
-import { EventHandler } from "./EventHandler"
-const config = require("../config.json")
 
-let filename = config.starbound_log_file_path
-let starboundLogStream = new Tail(filename, {
-  useWatchFile: true
-})
+import { ConfigValidatorFactory } from "./config-validator/ConfigValidator.factory"
+import { WatcherFactory } from "./watcher/Watcher.factory"
+import { EventHandlerFactory } from "./event-handler/EventHandler.factory"
 
-starboundLogStream.on("line", function(data: string) {
-  let metadata = data.match(/\[.*]\s(SXB_METADATA.*)/)
-  if (metadata == null) return
-  metadata = metadata[1].split(':')
-  EventHandler.handleEvent(metadata[1], metadata[2])
+ConfigValidatorFactory.make().validate().then(() => {
+  console.log("watching..")
+
+  WatcherFactory.make().on("line", function(data: string) {
+    let metadata = data.match(/\[.*]\s(SXB_EVENT.*)/)
+    if (metadata == null) return
+    metadata = metadata[1].split(':')
+  
+    let eventHandler = EventHandlerFactory.make()
+    eventHandler.handleEvent(metadata[1], metadata[2])
+      .catch(reason => { console.error(reason) })
+  })
+}).catch((reason: Error) => { 
+  console.error(reason.message)
 })

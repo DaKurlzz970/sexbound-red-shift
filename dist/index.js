@@ -1,16 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const tail_1 = require("tail");
-const EventHandler_1 = require("./EventHandler");
-const config = require("../config.json");
-let filename = config.starbound_log_file_path;
-let starboundLogStream = new tail_1.Tail(filename, {
-    useWatchFile: true
-});
-starboundLogStream.on("line", function (data) {
-    let metadata = data.match(/\[.*]\s(SXB_METADATA.*)/);
-    if (metadata == null)
-        return;
-    metadata = metadata[1].split(':');
-    EventHandler_1.EventHandler.handleEvent(metadata[1], metadata[2]);
+const ConfigValidator_factory_1 = require("./config-validator/ConfigValidator.factory");
+const Watcher_factory_1 = require("./watcher/Watcher.factory");
+const EventHandler_factory_1 = require("./event-handler/EventHandler.factory");
+ConfigValidator_factory_1.ConfigValidatorFactory.make().validate().then(() => {
+    console.log("Watching Starbound Log..");
+    Watcher_factory_1.WatcherFactory.make().on("line", function (data) {
+        let metadata = data.match(/\[.*]\s(SXB_EVENT.*)/);
+        if (metadata == null)
+            return;
+        metadata = metadata[1].split(':');
+        let eventHandler = EventHandler_factory_1.EventHandlerFactory.make();
+        eventHandler.handleEvent(metadata[1], metadata[2])
+            .catch(reason => { console.error(reason); });
+    });
+}).catch((reason) => {
+    console.error(reason.message);
 });

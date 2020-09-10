@@ -1,5 +1,5 @@
 ## Sexbound Red Shift
-NodeJS service which can be run simultaneously while playing Starbound. Every new line added to the 'starbound.log' file is scanned for SXB_METADATA. Upon scanning a SXB_METADATA event then custom events such as API / Webhook calls can be triggered. i.e. Dim the lights in your room, open the garage door, or vibrate something..
+NodeJS service which can be run simultaneously while playing Starbound. Every new line added to the 'starbound.log' file is scanned for SXB_EVENT. Upon scanning a SXB_EVENT event then custom events such as API / Webhook calls can be triggered. i.e. Dim the lights in your room, open the garage door, or vibrate something..
 
 ## Requirements
 * NPM
