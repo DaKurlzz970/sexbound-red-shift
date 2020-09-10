@@ -1,5 +1,5 @@
-## Sexbound Red Shift
-NodeJS service which can be run simultaneously while playing Starbound. Every new line added to the 'starbound.log' file is scanned for SXB_EVENT. Upon scanning a SXB_EVENT event then custom events such as API / Webhook calls can be triggered. i.e. Dim the lights in your room, open the garage door, or vibrate something..
+## Sexbound - Red Shift
+Users can run this as background service while playing Starbound (Sexbound). It will watch the 'starbound.log' file for special SXB_EVENT type events to be outputted, and it will attempt to handle every event it hears by executing associated actions. i.e. Dim the lights in your room, open the garage door, or vibrate an adult toy..
 
 ## Requirements
 * NPM
