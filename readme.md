@@ -6,7 +6,7 @@ Users can run this as background service while playing Starbound (Sexbound). It 
 
 ## Quick Start
 * Clone this repo.
-* Adjust 'config.json' with your own settings.
+* Rename '.env.example' to be '.env' and customize it with your own settings.
 * Run ```npm install``` and ```npm start```within the cloned directory in terminal.
 * Leave the process running in the terminal and while playing Starbound.
 
