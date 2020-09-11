@@ -15,7 +15,19 @@ SXB_EVENT events are forwarded to an API endpoint that you specify. They are sen
 
 ```JSON
 {
-  "eventName" : "CLIMAX",
-  "eventArgs" : { "param1": "value1" }
+  "eventName" : "SWITCHED_POSITION",
+  "eventArgs" : { 
+    "actors": [
+      {
+        "name" : "test_subject",
+        "uniqueId" : "abcd4321.."
+      },
+      {
+        "name" : "test_subject",
+        "uniqueId" : "abcd1234.."
+      }
+    ],
+    "position_name" : "missionary"
+  }
 }
 ```
