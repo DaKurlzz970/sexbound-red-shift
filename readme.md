@@ -16,6 +16,6 @@ SXB_EVENT events are forwarded to an API endpoint that you specify. They are sen
 ```
 {
   "eventName" : "CLIMAX",
-  "eventArgs" : "PARAM1=Test;Param2=Test;Param2=Test"
+  "eventArgs" : "param1=dummy;param2=dummy;param2=dummy;"
 }
 ```
