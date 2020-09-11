@@ -13,7 +13,7 @@ Users can run this as background service while playing Starbound (Sexbound). It 
 ## How it works
 SXB_EVENT events are forwarded to an API endpoint that you specify. They are sent via a POST request to <API_URL>/record as a request body with a schema like the following:
 
-```
+```JSON
 {
   "eventName" : "CLIMAX",
   "eventArgs" : "param1=dummy;param2=dummy;param2=dummy;"
