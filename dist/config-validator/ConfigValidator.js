@@ -11,16 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConfigValidator = void 0;
 class ConfigValidator {
-    constructor(config) {
-        this.config = config || require("../../config.json");
-    }
     validate() {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.validateStarboundLogFilePath();
         });
     }
     validateStarboundLogFilePath() {
-        return (this.config.starbound_log_file_path) ? Promise.resolve() :
+        return (process.env.starbound_log_file_path) ? Promise.resolve() :
             Promise.reject(new Error("starbound_log_file_path has not been set in the config.json file!"));
     }
 }

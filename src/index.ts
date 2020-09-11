@@ -1,3 +1,4 @@
+require('dotenv').config()
 import { ConfigValidatorFactory } from "./config-validator/ConfigValidator.factory"
 import { WatcherFactory } from "./watcher/Watcher.factory"
 import { EventHandlerFactory } from "./event-handler/EventHandler.factory"

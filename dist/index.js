@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require('dotenv').config();
 const ConfigValidator_factory_1 = require("./config-validator/ConfigValidator.factory");
 const Watcher_factory_1 = require("./watcher/Watcher.factory");
 const EventHandler_factory_1 = require("./event-handler/EventHandler.factory");

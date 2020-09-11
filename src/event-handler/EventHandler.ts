@@ -1,6 +1,5 @@
 import { IEventHandler } from './EventHandler.interface'
 import { IHttpRequestService } from '../http/HttpRequestService.interface'
-const config = require('../../config.json')
 
 export class EventHandler implements IEventHandler {
   httpRequestService: IHttpRequestService
@@ -10,12 +9,12 @@ export class EventHandler implements IEventHandler {
   }
 
   public handleEvent(eventName: string, eventArgs: any): Promise<any> {
-    /*return this.httpRequestService.post(
-      `${config.api_url}/record`,
+    if (!process.env.api_url) return Promise.resolve()
+    return this.httpRequestService.post(
+      `${process.env.api_url}/record`,
       this.buildRequestData(eventName, eventArgs),
       this.buildRequestConfig()
-    )*/
-    return Promise.resolve()
+    )
   }
 
   private buildRequestData(eventName: string, eventArgs: any) {
@@ -23,6 +22,6 @@ export class EventHandler implements IEventHandler {
   }
 
   private buildRequestConfig() {
-    return { headers: { "X-API-KEY": config.api_key }}
+    return { headers: { "X-API-KEY": process.env.api_key }}
   }
 }
