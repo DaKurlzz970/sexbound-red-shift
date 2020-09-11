@@ -6,12 +6,12 @@ const EventHandler_factory_1 = require("./event-handler/EventHandler.factory");
 ConfigValidator_factory_1.ConfigValidatorFactory.make().validate().then(() => {
     console.log("watching..");
     Watcher_factory_1.WatcherFactory.make().on("line", function (data) {
-        let metadata = data.match(/\[.*]\s(SXB_EVENT.*)/);
+        let metadata = data.match(/\[.*]\s(SXB_EVENT.*)::(.*)::(.*)/);
         if (metadata == null)
             return;
-        metadata = metadata[1].split(':');
+        console.log("EVENT : " + metadata[2] + " => " + metadata[3]);
         let eventHandler = EventHandler_factory_1.EventHandlerFactory.make();
-        eventHandler.handleEvent(metadata[1], metadata[2])
+        eventHandler.handleEvent(metadata[2], metadata[3])
             .catch(reason => { console.error(reason); });
     });
 }).catch((reason) => {

@@ -6,14 +6,13 @@ ConfigValidatorFactory.make().validate().then(() => {
   console.log("watching..")
 
   WatcherFactory.make().on("line", function(data: string) {
-    let metadata = data.match(/\[.*]\s(SXB_EVENT.*)/)
+    let metadata = data.match(/\[.*]\s(SXB_EVENT.*)::(.*)::(.*)/)
     if (metadata == null) return
-    metadata = metadata[1].split(':')
-  
-    console.log("EVENT : " + metadata[1] + " => " + metadata[2])
+
+    console.log("EVENT : " + metadata[2] + " => " + metadata[3])
 
     let eventHandler = EventHandlerFactory.make()
-    eventHandler.handleEvent(metadata[1], metadata[2])
+    eventHandler.handleEvent(metadata[2], metadata[3])
       .catch(reason => { console.error(reason) })
   })
 }).catch((reason: Error) => {

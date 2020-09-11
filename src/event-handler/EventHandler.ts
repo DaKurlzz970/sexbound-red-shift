@@ -10,11 +10,12 @@ export class EventHandler implements IEventHandler {
   }
 
   public handleEvent(eventName: string, eventArgs: any): Promise<any> {
-    return this.httpRequestService.post(
+    /*return this.httpRequestService.post(
       `${config.api_url}/record`,
       this.buildRequestData(eventName, eventArgs),
       this.buildRequestConfig()
-    )
+    )*/
+    return Promise.resolve()
   }
 
   private buildRequestData(eventName: string, eventArgs: any) {

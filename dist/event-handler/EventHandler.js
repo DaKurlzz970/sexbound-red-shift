@@ -7,7 +7,12 @@ class EventHandler {
         this.httpRequestService = httpRequestService;
     }
     handleEvent(eventName, eventArgs) {
-        return this.httpRequestService.post(`${config.api_url}/record`, this.buildRequestData(eventName, eventArgs), this.buildRequestConfig());
+        /*return this.httpRequestService.post(
+          `${config.api_url}/record`,
+          this.buildRequestData(eventName, eventArgs),
+          this.buildRequestConfig()
+        )*/
+        return Promise.resolve();
     }
     buildRequestData(eventName, eventArgs) {
         return { eventName: eventName, eventArgs: eventArgs };
