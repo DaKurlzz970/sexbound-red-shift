@@ -1,5 +1,5 @@
 ## Sexbound - Red Shift
-Users can run this as background service while playing Starbound (Sexbound). It will watch the 'starbound.log' file for special SXB_EVENT type events to be outputted, and it will attempt to handle every event it hears by executing associated actions. i.e. Dim the lights in your room, open the garage door, or vibrate an adult toy..
+Users can run this as background service while playing Starbound (Sexbound). It will watch the 'starbound.log' file for special SXB_EVENT type events to be outputted, and it will attempt to handle every event it hears by making a POST request to an API defined in the .env file. You can basically use in-game Starbound actions to do things in real-life.
 
 ## Prerequisites
 * Install NPM
